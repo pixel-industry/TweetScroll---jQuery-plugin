@@ -40,6 +40,7 @@ simply make HTML structure as shown below:
 
 Last step is to setup plugin with desired options. First you need to include tweetscroll.js file in your 
 HTML document at the end of the body. After that, inside "script" tags call jquery plugin like this: 
+
 /* ================ TWEETS SCROLL ================ 
 $('.tweets-list-container').tweetscroll({ 
   username: 'envatowebdesign', 
