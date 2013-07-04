@@ -1,4 +1,4 @@
-TweetScroll---jQuery-plugin
+TweetScroll jQuery plugin
 ===========================
 
 TweetScroll is jQuery widget that displays latest tweets from your Twitter account or multiple accounts 
