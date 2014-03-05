@@ -65,6 +65,23 @@ $('.tweets-list-container').tweetscroll({
 </code>
 </pre>
 
+<p>CSS Styling</p>
+<pre>
+.tweets-list-container{
+    width: 100%;
+    overflow: hidden;
+}
+
+.tweet-list {
+    position: relative;
+    list-style-type: none;
+}
+
+.tweet-list li {
+    padding-bottom: 10px;
+}
+</pre>
+
 <p>
 There are eight parameter in this plugin which can be changed by your needs.</p>
 <ul>
