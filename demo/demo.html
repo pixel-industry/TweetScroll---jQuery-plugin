@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TWEETSCROLL DEMO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+
+        <!-- TweetScroll Stylesheet -->
+        <link href="../source/css/tweetscroll.css" media="all" rel="stylesheet" type="text/css"/>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <!-- TweetScroll Script -->
+        <script src="../source/jquery.tweetscroll.js" type='text/javascript'></script>
+
+        <style>
+            .row.heading h3{
+                text-align: center;
+                border-bottom: 1px solid #ededed;
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+            }
+            
+        </style>
+    </head>
+    <body>      
+        <section class="page-content">
+            <div class="container">
+                <div class="row heading"><div class="col-md-12"><h3>TWEETSCROLL DEMO</h3></div></div>
+                <div class="row">
+                    <article class="col-md-3 triggerAnimation animated" data-animate="fadeInRight">
+                        <h3>Slide up animation</h3>
+
+                        <div class="tweets-list-container tweets-list-container-animtion-slide-up twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-3 triggerAnimation animated" data-animate="fadeInDown">
+                        <h3>Slide down animation</h3>
+
+                        <div class="tweets-list-container tweets-list-container-animtion-slide-down twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-3 triggerAnimation animated" data-animate="fadeInUp">
+                        <h3>Fade animation</h3>
+
+                        <div class="tweets-list-container tweets-list-container-animtion-fade twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-3 triggerAnimation animated" data-animate="fadeInLeft">
+                        <h3>No animation</h3>
+
+                        <div class="tweets-list-container tweets-list-container-animtion-no-animation twitter-demo"></div>
+                    </article>
+                </div>
+
+                <div class="row">
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInRight">
+                        <h3>Date format MM/DD/YYYY</h3>
+
+                        <div class="tweets-list-container tweets-list-container-date-1 twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInLeft">
+                        <h3>Date format DD/MM/YYYY</h3>
+
+                        <div class="tweets-list-container tweets-list-container-date-2 twitter-demo"></div>
+                    </article>
+                </div>
+
+                <div class="row">
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInRight">
+                        <h3>Slide up with twitter logo</h3>
+
+                        <div class="tweets-list-container tweets-list-container-with-logo logo twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInLeft">
+                        <h3>Tweets with profile image</h3>
+
+                        <div class="tweets-list-container tweets-list-container-profile-image twitter-demo"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            /* <![CDATA[ */
+            jQuery(document).ready(function($) {
+                'use strict';
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-animtion-slide-up').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_up',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-animtion-slide-down').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_down',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-animtion-fade').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'fade',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-animtion-no-animation').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 2,
+                    replies: true,
+                    position: 'append',
+                    animation: 'false',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-date-1').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 2,
+                    replies: true,
+                    position: 'append',
+                    animation: 'fade',
+                    date_format: 'style2',
+                    time: true,
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-date-2').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 2,
+                    replies: true,
+                    position: 'append',
+                    animation: 'fade',
+                    date_format: 'style1',
+                    time: true,
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php"
+                }); // TWEETSCROLL END
+                
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-with-logo').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_up',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php",
+                    logo: true
+                }); // TWEETSCROLL END
+                
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-profile-image').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_up',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php",
+                    logo: true,
+                    profile_image: true
+                }); // TWEETSCROLL END
+            });
+            /* ]]> */
+        </script>
+    </body>
+</html>
