@@ -30,7 +30,7 @@ c. Callback URL can be left blank.
 5. Make a note of the Consumer key, Consumer secret, Access token and Access token secret
 
 
-Next step is to enter keys in file. Open CleanBIZ/js/twitter/tweets.php file. Enter keys you get from Twitter Developers page:
+Next step is to enter keys in file. Open "twitter/tweets.php" file. Enter keys you get from Twitter Developers page:
  consumerkey
  consumersecret
  accesstoken
