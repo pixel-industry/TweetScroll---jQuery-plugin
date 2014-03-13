@@ -7,7 +7,7 @@ using new oAuth API 1.1.
 Author: Pixel Industry<br />
 Website: pixel-industry.com<br />
 Licence: GPL<br />
-Version: 1.2.4
+Version: 1.2.5
 
 Wordpress version is available in [Wordpress Plugins Repository](http://wordpress.org/plugins/tweetscroll-widget/).
 
@@ -30,7 +30,7 @@ c. Callback URL can be left blank.
 5. Make a note of the Consumer key, Consumer secret, Access token and Access token secret
 
 
-Next step is to enter keys in file. Open CleanBIZ/js/twitter/tweets.php file. Enter keys you get from Twitter Developers page:
+Next step is to enter keys in file. Open "twitter/tweets.php" file. Enter keys you get from Twitter Developers page:
  consumerkey
  consumersecret
  accesstoken
@@ -49,7 +49,7 @@ simply make HTML structure as shown below: </p>
 </pre>
 
 <p>
-Include files:
+Include files:<p>
 <pre>
 <code>
 <!-- jQuery -->
@@ -63,7 +63,7 @@ Include files:
 <script src="jquery.tweetscroll.js" type='text/javascript'></script>
 </code>
 </pre>
-
+<p>
 Last step is to setup plugin with desired options. Below is script with default options: </p>
 <pre>
 <code>
@@ -80,7 +80,8 @@ $('.tweets-list-container').tweetscroll({
     animation: 'slide_up',
     url_new_window: false,
     request_url: 'twitter/tweets.php',
-    logo: false 
+    logo: false,
+    profile_image: false
 });
 
 </code>
@@ -114,17 +115,18 @@ $('.tweets-list-container').tweetscroll({
 <p>
 There are eight parameter in this plugin which can be changed by your needs.</p>
 <ul>
-<li>username - your username or list of usernames</li>
-<li>time - include time when tweet was published</li>
-<li>limit - how many tweets you want to show</li>
-<li>replies - set this to true if you want to show "Replay" link</li>
-<li>data_format - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY</li>
-<li>position - how you want to show tweets, append or prepend</li>
-<li>animation - how you want to animate your tweets. There are four different options: [slide_up, slide_down, fade, false]. False means that tweets won't scroll</li>
-<li>visible_tweets - how many tweets you want to be visible in one time</li>
-<li>speed - scroll animation speed</li>
-<li>delay - time between scrolls</li>
-<li>url_new_window - open URLS in new window</li>
-<li>request_url- URL to PHP file where request is sent (by default tweets.php)</li>
-<li>logo - enable twitter logo to be place before tweet</li>
+<li><strong>username</strong> - your username or list of usernames</li>
+<li><strong>time</strong> - include time when tweet was published</li>
+<li><strong>limit</strong> - how many tweets you want to show</li>
+<li><strong>replies</strong> - set this to true if you want to show "Replay" link</li>
+<li><strong>data_format</strong> - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY</li>
+<li><strong>position</strong> - how you want to show tweets, append or prepend</li>
+<li><strong>animation</strong> - how you want to animate your tweets. There are four different options: [slide_up, slide_down, fade, false]. False means that tweets won't scroll</li>
+<li><strong>visible_tweets</strong> - how many tweets you want to be visible in one time</li>
+<li><strong>speed</strong> - scroll animation speed</li>
+<li><strong>delay</strong> - time between scrolls</li>
+<li><strong>url_new_window</strong> - open URLS in new window</li>
+<li><strong>request_url</strong>- URL to PHP file where request is sent (by default tweets.php)</li>
+<li><strong>logo</strong> - enable twitter logo to be place before tweet</li>
+<li><strong>profile_image</strong> - add profile image before tweet</li>
 </ul>

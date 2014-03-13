@@ -87,6 +87,20 @@ and open the template in the editor.
                         <div class="tweets-list-container tweets-list-container-profile-image twitter-demo"></div>
                     </article>
                 </div>
+                
+                <div class="row">
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInRight">
+                        <h3>Continous scroll</h3>
+
+                        <div class="tweets-list-container tweets-list-container-countinuous logo twitter-demo"></div>
+                    </article>
+
+                    <article class="col-md-6 triggerAnimation animated" data-animate="fadeInLeft">
+                        <h3>Tweets from multiple accounts</h3>
+
+                        <div class="tweets-list-container tweets-list-container-multiple-accs twitter-demo"></div>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -194,6 +208,34 @@ and open the template in the editor.
                     visible_tweets: 2,
                     request_url: "../source/twitter/tweets.php",
                     logo: true,
+                    profile_image: true
+                }); // TWEETSCROLL END
+                
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-countinuous').tweetscroll({
+                    username: 'pixel_industry',
+                    limit: 20,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_up',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php",
+                    logo: true,
+                    profile_image: true,
+                    delay: 0
+                }); // TWEETSCROLL END
+                
+                /* ================ TWEETSCROLL PLUGIN ================ */
+                $('.tweets-list-container-multiple-accs').tweetscroll({
+                    username: ['pixel_industry', 'envatowebdesign'],
+                    limit: 6,
+                    replies: true,
+                    position: 'append',
+                    animation: 'slide_up',
+                    date_format: 'style2',
+                    visible_tweets: 2,
+                    request_url: "../source/twitter/tweets.php",
                     profile_image: true
                 }); // TWEETSCROLL END
             });

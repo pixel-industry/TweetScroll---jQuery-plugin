@@ -15,8 +15,8 @@
         var defaults = {
             limit: 5, //number of tweets to fetch
             visible_tweets: 2, //number of tweets to be visible
-            speed: 600,
-            delay: 3000,
+            speed: 600, // scroll animation speed
+            delay: 3000, // delay between animations
             username: 'envatowebdesign', //@username tweets to display. can be multiple usernames e.g. [philipbeel, vmrkela]
             time: false, //display date
             replies: false, //filter out @replys
@@ -61,37 +61,25 @@
 
             //do a JSON request to twitter API
             if (jQuery.isArray(tweetscrollOptions.username)) {
-                var numOfUsers = tweetscrollOptions.username.length;
-                var tweetsCount, $tweetList;
-                var restTweets = (tweetscrollOptions.limit - (Math.floor(tweetscrollOptions.limit / numOfUsers) * numOfUsers));
-                var tweetsPerUser = Math.floor(tweetscrollOptions.limit / numOfUsers);
+
+                var $tweetList;
                 $allTweets = $('<ul class="tweet-list">');
                 if (tweetscrollOptions.logo)
                     $allTweets.addClass('twitter-logo');
 
-                jQuery.each(tweetscrollOptions.username, function(index, val) {
-
-                    if (restTweets > 0) {
-                        tweetsCount = tweetsPerUser + 1;
-                        restTweets--;
-                    }
-                    else {
-                        tweetsCount = tweetsPerUser;
+                $.getJSON(requestURL, tweetscrollOptions, function(data) {
+                    var concatVals = data[0];
+                    for (var i = 1; i < data.length; i++) {
+                        $.merge(concatVals, data[i]);
                     }
 
-                    $.getJSON(requestURL, tweetscrollOptions, function(data) {
-
-                        $tweetList = createHtml(data, tweetscrollOptions);
-
-                        $tweetList.find('li').appendTo($allTweets);
-                        if (index == numOfUsers - 1) {
-                            $($allTweets).appendTo(act);
-                            setInitialListHeight($allTweets);
-                            setInterval(function() {
-                                animateTweets($allTweets);
-                            }, tweetscrollOptions.delay);
-                        }
-                    });
+                    $tweetList = createHtml(concatVals, tweetscrollOptions);
+                    $tweetList.find('li').appendTo($allTweets);
+                    $($allTweets).appendTo(act);
+                    setInitialListHeight($allTweets);
+                    setTimeout(function() {
+                        animateTweets($allTweets);
+                    }, tweetscrollOptions.delay);
 
                 });
 
@@ -119,13 +107,15 @@
                     case 'slide_down':
                         var itemHeight = $allTweets.find('li').outerHeight();
                         var containerSize = 0;
-                        var visibleItemsMax = tweetscrollOptions.visible_tweets + 2;
-                        for (var i = 2; i < visibleItemsMax; i++) {
-                            var reversePos = tweetscrollOptions.limit - i;
-                            var selector = $allTweets.find("li").eq(reversePos);
+                        var visibleItemsMax = tweetscrollOptions.visible_tweets;
+                        for (var i = 1; i < visibleItemsMax; i++) {
+                            var selector = $allTweets.find("li:nth-child(" + i + ")");
                             containerSize += $(selector).outerHeight();
                         }
                         var lastItemHeight = parseInt($allTweets.find("li:last").outerHeight());
+
+                        containerSize += lastItemHeight;
+
                         $allTweets.parent().css({
                             'height': containerSize
                         });
@@ -221,8 +211,7 @@
                 if (tweetscrollOptions.animation == 'slide_down') {
                     var visibleItemsMax = tweetscrollOptions.visible_tweets + 1;
                     for (var i = 1; i < visibleItemsMax; i++) {
-                        var reversePos = tweetscrollOptions.limit - i;
-                        var selector = $allTweets.find("li").eq(reversePos);
+                        var selector = $allTweets.find("li:nth-child(" + i + ")");
                         containerSize += $(selector).outerHeight();
                     }
                     $allTweets.parent().css({
@@ -285,10 +274,10 @@
                     if (tweetscrollOptions.profile_image) {
                         $tweetList.append('<li class="profile-image tweet_content_' + i + '" style="background: url(' + profileImage + ') no-repeat left top;"><p class="tweet_link_' + i + '">' + item.text.replace(/#(.*?)(\s|$)/g, '<span class="hash">#$1 </span>').replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$&">$&</a> ').replace(/@(.*?)(\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') + '</p></li>');
                     } else {
-                        $tweetList.append('<li class="tweet_content_' + i + '><p class="tweet_link_' + i + '">' + item.text.replace(/#(.*?)(\s|$)/g, '<span class="hash">#$1 </span>').replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$&">$&</a> ').replace(/@(.*?)(\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') + '</p></li>');
+                        $tweetList.append('<li class="tweet_content_' + i + '"><p class="tweet_link_' + i + '">' + item.text.replace(/#(.*?)(\s|$)/g, '<span class="hash">#$1 </span>').replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$&">$&</a> ').replace(/@(.*?)(\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') + '</p></li>');
                     }
                 }
-                //display the tiem of tweet if required
+                //display the time of tweet if required
                 if (tweetscrollOptions.time == true) {
                     var monthIndex = jQuery.inArray(item.created_at.substr(4, 3), shortMonths);
 
@@ -299,9 +288,8 @@
                         }
                         $tweetList.find('.tweet_link_' + i).append('<small> ' + item.created_at.substr(8, 2) + '/' + tweetMonth + '/' + item.created_at.substr(26, 4) + ' ' + item.created_at.substr(11, 8) + '</small>');
                     } else {
-
                         tweetMonth = allMonths[monthIndex];
-                        $tweetList.find('.tweet_link_' + i).append('<small> ' + tweetMonth + ' ' + item.created_at.substr(8, 2) + ' ' + item.created_at.substr(26, 4) + ' ' + item.created_at.substr(11, 8) + '</small>');
+                        $tweetList.find('.tweet_link_' + i).append('<small> ' + tweetMonth + ' ' + item.created_at.substr(8, 2) + ', ' + item.created_at.substr(26, 4) + ' ' + item.created_at.substr(11, 8) + '</small>');
                     }
 
                 }
