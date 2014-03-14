@@ -2,10 +2,10 @@
 
 TweetScroll is jQuery widget that displays latest tweets from your Twitter account or multiple accounts using new oAuth API 1.1. 
 
-Author: Pixel Industry
-Website: [pixel-industry.com](pixel-industry.com)
-Licence: GPL
-Version: 1.2.6
+Author: Pixel Industry  
+Website: [pixel-industry.com](pixel-industry.com)  
+Licence: GPL  
+Version: 1.2.6  
 
 Wordpress version is available in [Wordpress Plugins Repository](http://wordpress.org/plugins/tweetscroll-widget/).
 
@@ -41,9 +41,9 @@ You can use this widget in any place of your website and in any column size. To 
 simply make HTML structure as shown below:
 
 ```HTML
- &#60;article id="tweet-scroll-wrapper" class="clearfix"&#62;
-     &#60;div class="tweets-list-container"&#62;&#60;/div&#62;
-&#60;/article&#62;
+<article id="tweet-scroll-wrapper" class="clearfix">
+     <div class="tweets-list-container"></div>
+</article>
 ```
 
 ### jQuery Code ###
