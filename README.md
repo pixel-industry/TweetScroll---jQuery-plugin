@@ -36,7 +36,7 @@ Next step is to enter keys in file. Open "twitter/tweets.php" file. Enter keys y
  accesstoken
  accesstokensecret
 
-<h3>HTML STRUCTURE & JQUERY CODE:</h3>
+<h3>HTML Code</h3>
 <p>
 You can use this widget in any place of your website and in any column size. To use it, 
 simply make HTML structure as shown below: </p>
@@ -48,8 +48,7 @@ simply make HTML structure as shown below: </p>
 </code>
 </pre>
 
-<p>
-Include files:<p>
+<h3>jQuery Code</h3>
 <pre>
 <code>
 <!-- jQuery -->
@@ -87,7 +86,7 @@ $('.tweets-list-container').tweetscroll({
 </code>
 </pre>
 
-<p>CSS Styling</p>
+<h3>CSS Styling</h3>
 <pre>
 .tweets-list-container{
     width: 100%;
@@ -111,7 +110,7 @@ $('.tweets-list-container').tweetscroll({
     padding-left: 40px;
 }
 </pre>
-
+<h3>Plugin Options</h3>
 <p>
 There are eight parameter in this plugin which can be changed by your needs.</p>
 <ul>
@@ -130,3 +129,6 @@ There are eight parameter in this plugin which can be changed by your needs.</p>
 <li><strong>logo</strong> - enable twitter logo to be place before tweet</li>
 <li><strong>profile_image</strong> - add profile image before tweet</li>
 </ul>
+
+<h3>License</h3>
+<p>Plugin is licensed under GPL license.</p>
