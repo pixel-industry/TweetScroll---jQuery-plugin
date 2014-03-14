@@ -1,8 +1,6 @@
-## TweetScroll jQuery plugin ##
+# TweetScroll jQuery plugin #
 
-
-TweetScroll is jQuery widget that displays latest tweets from your Twitter account or multiple accounts 
-using new oAuth API 1.1. 
+TweetScroll is jQuery widget that displays latest tweets from your Twitter account or multiple accounts using new oAuth API 1.1. 
 
 Author: Pixel Industry
 Website: [pixel-industry.com](pixel-industry.com)
@@ -115,20 +113,20 @@ $('.tweets-list-container').tweetscroll({
 
 There are eight parameter in this plugin which can be changed by your needs.
 
-**username** - your username or list of usernames
-**time** - include time when tweet was published
-**limit** - how many tweets you want to show
-**replies** - set this to true if you want to show "Replay" link
-**data_format** - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY
-**position** - how you want to show tweets, append or prepend
-**animation** - how you want to animate your tweets. There are four different options: [slide_up, slide_down, fade, false]. False means that tweets won't scroll
-**visible_tweets** - how many tweets you want to be visible in one time
-**speed** - scroll animation speed
-**delay** - time between scrolls
-**url_new_window** - open URLS in new window
-**request_url** - URL to PHP file where request is sent (by default tweets.php)
-**logo** - enable twitter logo to be place before tweet
-**profile_image** - add profile image before tweet
+* **username** - your username or list of usernames
+* **time** - include time when tweet was published
+* **limit** - how many tweets you want to show
+* **replies** - set this to true if you want to show "Replay" link
+* **data_format** - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY
+* **position** - how you want to show tweets, append or prepend
+* **animation** - how you want to animate your tweets. There are four different options: [slide_up, slide_down, fade, false]. False means that tweets won't scroll
+* **visible_tweets** - how many tweets you want to be visible in one time
+* **speed** - scroll animation speed
+* **delay** - time between scrolls
+* **url_new_window** - open URLS in new window
+* **request_url** - URL to PHP file where request is sent (by default tweets.php)
+* **logo** - enable twitter logo to be place before tweet
+* **profile_image** - add profile image before tweet
 
 ### License ###
 Plugin is licensed under GPL license.
