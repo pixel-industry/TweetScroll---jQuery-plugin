@@ -7,7 +7,7 @@ using new oAuth API 1.1.
 Author: Pixel Industry<br />
 Website: pixel-industry.com<br />
 Licence: GPL<br />
-Version: 1.2.5
+Version: 1.2.6
 
 Wordpress version is available in [Wordpress Plugins Repository](http://wordpress.org/plugins/tweetscroll-widget/).
 

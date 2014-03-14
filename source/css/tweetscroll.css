@@ -18,6 +18,7 @@
 .tweet-list.twitter-logo li {
     background: url('../img/tweet.png') no-repeat;
     padding-left: 40px;
+    background-position-y: 2px;
 }
 
 .tweet-list.twitter-logo li.profile-image{

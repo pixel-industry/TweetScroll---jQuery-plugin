@@ -2,7 +2,7 @@
  * TweetScroll jQuery Plugin
  * Author: Pixel Industry
  * Author URL : http://pixel-industry.com
- * Version: 1.2.4
+ * Version: 1.2.6
  * 
  * jQuery plugin to load latest Twitter tweets.
  * 
@@ -59,45 +59,20 @@
                 var requestURL = PiTweetScroll.ajaxrequests;
             }
 
-            //do a JSON request to twitter API
-            if (jQuery.isArray(tweetscrollOptions.username)) {
-
-                var $tweetList;
-                $allTweets = $('<ul class="tweet-list">');
-                if (tweetscrollOptions.logo)
-                    $allTweets.addClass('twitter-logo');
-
-                $.getJSON(requestURL, tweetscrollOptions, function(data) {
-                    var concatVals = data[0];
-                    for (var i = 1; i < data.length; i++) {
-                        $.merge(concatVals, data[i]);
-                    }
-
-                    $tweetList = createHtml(concatVals, tweetscrollOptions);
-                    $tweetList.find('li').appendTo($allTweets);
-                    $($allTweets).appendTo(act);
-                    setInitialListHeight($allTweets);
-                    setTimeout(function() {
-                        animateTweets($allTweets);
-                    }, tweetscrollOptions.delay);
-
-                });
-
-            } else {
-                if (tweetscrollOptions.animation == false) {
-                    tweetscrollOptions.limit = tweetscrollOptions.visible_tweets;
-                }
-
-                $.getJSON(requestURL, tweetscrollOptions, function(data) {
-                    $allTweets = createHtml(data, tweetscrollOptions);
-                    $($allTweets).appendTo(act);
-                    setInitialListHeight($allTweets);
-                    setTimeout(function() {
-                        animateTweets($allTweets);
-                    }, tweetscrollOptions.delay);
-
-                });
+            if (tweetscrollOptions.animation == false) {
+                tweetscrollOptions.limit = tweetscrollOptions.visible_tweets;
             }
+
+            //do a JSON request to twitter API
+            $.getJSON(requestURL, tweetscrollOptions, function(data) {
+                $allTweets = createHtml(data, tweetscrollOptions);
+                $($allTweets).appendTo(act);
+                setInitialListHeight($allTweets);
+                setTimeout(function() {
+                    animateTweets($allTweets);
+                }, tweetscrollOptions.delay);
+
+            });
 
             function animateTweets($allTweets) {
                 var scrollSpeed = tweetscrollOptions.speed;
