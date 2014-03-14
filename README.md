@@ -11,7 +11,7 @@ Version: 1.2.6
 
 Wordpress version is available in [Wordpress Plugins Repository](http://wordpress.org/plugins/tweetscroll-widget/).
 
-<h3>Description:<h3>
+<h3>Description:</h3>
 <p>
 TweetScroll is widget that displays latest tweets from your Twitter account or multiple accounts using new 
 oAuth API 1.1. This simple widget can be used in any website/blog. Twitter recently shutdown their API 1.0 
@@ -62,6 +62,7 @@ simply make HTML structure as shown below: </p>
 <script src="jquery.tweetscroll.js" type='text/javascript'></script>
 </code>
 </pre>
+
 <p>
 Last step is to setup plugin with desired options. Below is script with default options: </p>
 <pre>
