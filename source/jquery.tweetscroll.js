@@ -220,6 +220,58 @@
 
         });
 
+        /**
+        * relative time calculator FROM TWITTER
+        * @param {string} twitter date string returned from Twitter API
+        * @return {string} relative time like "2 minutes ago"
+        */
+        function timeAgo(dateString) {
+            var rightNow = new Date();
+            var then = new Date(dateString);
+            
+            if ($.browser.msie) {
+                // IE can't parse these crazy Ruby dates
+                then = Date.parse(dateString.replace(/( \+)/, ' UTC$1'));
+            }
+            var diff = rightNow - then;
+            var second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24,
+            week = day * 7;
+            if (isNaN(diff) || diff < 0) {
+                return ""; // return blank string if unknown
+            }
+            if (diff < second * 2) {
+                // within 2 seconds
+                return "right now";
+            }
+            if (diff < minute) {
+                return Math.floor(diff / second) + " seconds ago";
+            }
+            if (diff < minute * 2) {
+                return "about 1 minute ago";
+            }
+            if (diff < hour) {
+                return Math.floor(diff / minute) + " minutes ago";
+            }
+            if (diff < hour * 2) {
+                return "about 1 hour ago";
+            }
+            if (diff < day) {
+                return Math.floor(diff / hour) + " hours ago";
+            }
+            if (diff > day && diff < day * 2) {
+                return "yesterday";
+            }
+            if (diff < day * 365) {
+                return Math.floor(diff / day) + " days ago";
+            }
+            else {
+                return "over a year ago";
+            }
+        }
+        
         function createHtml(data, tweetscrollOptions) {
             var $tweetList;
             var tweetMonth = '';
@@ -262,9 +314,12 @@
                             tweetMonth = '0' + tweetMonth;
                         }
                         $tweetList.find('.tweet_link_' + i).append('<small> ' + item.created_at.substr(8, 2) + '/' + tweetMonth + '/' + item.created_at.substr(26, 4) + ' ' + item.created_at.substr(11, 8) + '</small>');
-                    } else {
+                    } else if (tweetscrollOptions.date_format == 'style2') {
                         tweetMonth = allMonths[monthIndex];
                         $tweetList.find('.tweet_link_' + i).append('<small> ' + tweetMonth + ' ' + item.created_at.substr(8, 2) + ', ' + item.created_at.substr(26, 4) + ' ' + item.created_at.substr(11, 8) + '</small>');
+                    } else {
+                      relativeTime = timeAgo(item.created_at);
+                      $tweetList.find('.tweet_link_' + i).append('<small> ' + relativeTime + '</small>');
                     }
 
                 }
