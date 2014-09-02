@@ -117,7 +117,7 @@ There are eight parameter in this plugin which can be changed by your needs.
 * **time** - include time when tweet was published
 * **limit** - how many tweets you want to show
 * **replies** - set this to true if you want to show "Replay" link
-* **data_format** - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY
+* **data_format** - 'style1' - DD/MM/YYYY or 'style2' - MM/DD/YYYY or (NEW!) 'style3' - example: '2 minutes ago'
 * **position** - how you want to show tweets, append or prepend
 * **animation** - how you want to animate your tweets. There are four different options: [slide_up, slide_down, fade, false]. False means that tweets won't scroll
 * **visible_tweets** - how many tweets you want to be visible in one time
