@@ -3,7 +3,7 @@
 TweetScroll is jQuery widget that displays latest tweets from your Twitter account or multiple accounts using new oAuth API 1.1. 
 
 Author: Pixel Industry  
-Website: [pixel-industry.com](pixel-industry.com)  
+Website: [pixel-industry.com](http://pixel-industry.com)  
 Licence: GPL  
 Version: 1.2.6  
 
